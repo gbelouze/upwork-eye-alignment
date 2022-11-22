@@ -43,8 +43,6 @@ def align_eyes(imgs: Iterable[np.ndarray], mid_eyes: np.ndarray):
 
     dist_mid_eye = mid_eyes.mean(axis=0)
     shifts = dist_mid_eye[None, :] - mid_eyes
-    # print(f"{shifts=}")
-    # return [ndimage.shift(img, list(shift) + [0]) for img, shift in zip(imgs, shifts)]
 
     bound_low = shifts.max(axis=0)
     bound_low_to_high = (imshape + shifts.min(axis=0) - bound_low).astype(int)
